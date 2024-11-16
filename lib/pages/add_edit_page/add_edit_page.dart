@@ -39,7 +39,6 @@ class _AddEditPageState extends State<AddEditPage> {
   @override
   Widget build(BuildContext context) {
     if (widget.addEditArgumentModel != null) {
-      print(widget.addEditArgumentModel!.employeeEndDate);
       _textEditingController.text = widget.addEditArgumentModel!.employeeName;
       context
           .read<BottomModalOptionCubit>()
@@ -90,7 +89,7 @@ class _AddEditPageState extends State<AddEditPage> {
                           child: InkWell(
                             onTap: () {
                               context.read<DeleteBloc>().add(
-                                    DeleteRecordEvent(
+                                DeleteRecordFromEditEvent(
                                         widget.addEditArgumentModel!.empId),
                                   );
                               context.read<StartDateCubit>().resetCubit();

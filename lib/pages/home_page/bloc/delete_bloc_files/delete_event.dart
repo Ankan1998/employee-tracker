@@ -9,4 +9,10 @@ class DeleteRecordEvent extends DeleteEvent {
   DeleteRecordEvent(this.empId);
 }
 
+class DeleteRecordFromEditEvent extends DeleteEvent {
+  final int empId;
+
+  DeleteRecordFromEditEvent(this.empId);
+}
+
 class UndoDeleteEvent extends DeleteEvent {}

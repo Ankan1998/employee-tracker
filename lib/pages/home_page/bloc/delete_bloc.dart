@@ -10,11 +10,22 @@ part 'delete_bloc_files/delete_state.dart';
 
 class DeleteBloc extends Bloc<DeleteEvent, DeleteState> {
   DeleteBloc() : super(DeleteInitial()) {
+    on<DeleteRecordFromEditEvent>(_deleteRecordFromEditEvent);
     on<DeleteRecordEvent>(_deleteRecordEvent);
     on<UndoDeleteEvent>(_undoDeleteEvent);
   }
 
   Timer? _undoTimer;
+
+  Future<void> _deleteRecordFromEditEvent(DeleteRecordFromEditEvent event, Emitter<DeleteState> emit) async {
+    try {
+      DatabaseHelper helper = DatabaseHelper.instance;
+      await helper.delete(event.empId);
+    } catch (e) {
+      print("Something Went Wrong");
+      emit(DeleteFailure());
+    }
+  }
 
   Future<void> _deleteRecordEvent(
       DeleteRecordEvent event, Emitter<DeleteState> emit) async {
