@@ -45,6 +45,8 @@ dev_dependencies:
   flutter_bloc: ^8.1.6
   equatable: ^2.0.5
   sqflite: ^2.4.1
+  sqflite_common_ffi: ^2.3.4
+  sqflite_common_ffi_web: ^0.4.5+3
   path: ^1.9.0
   group_list_view: ^1.1.1
   flutter_svg: ^2.0.14
